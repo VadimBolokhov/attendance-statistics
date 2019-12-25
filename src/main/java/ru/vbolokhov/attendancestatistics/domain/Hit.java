@@ -19,7 +19,7 @@ public class Hit {
     @Column(name = "page")
     private String page;
     @Column(name = "hit_date")
-    private LocalDateTime hit_date;
+    private LocalDateTime hitDate;
 
     public Hit() {
     }
@@ -48,11 +48,11 @@ public class Hit {
         this.page = page;
     }
 
-    public LocalDateTime getHit_date() {
-        return hit_date;
+    public LocalDateTime getHitDate() {
+        return hitDate;
     }
 
-    public void setHit_date(LocalDateTime hit_date) {
-        this.hit_date = hit_date;
+    public void setHitDate(LocalDateTime hitDate) {
+        this.hitDate = hitDate;
     }
 }

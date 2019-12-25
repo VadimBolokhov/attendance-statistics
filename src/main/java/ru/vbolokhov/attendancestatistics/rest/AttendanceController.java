@@ -2,10 +2,7 @@ package ru.vbolokhov.attendancestatistics.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.vbolokhov.attendancestatistics.domain.Hit;
 import ru.vbolokhov.attendancestatistics.domain.CustomStats;
 import ru.vbolokhov.attendancestatistics.domain.DailyStats;
@@ -28,11 +25,8 @@ public class AttendanceController {
     }
 
     @PostMapping("/counter")
-    public DailyStats createEntry(@RequestParam("id") int id, @RequestParam("page") String page) {
-        Hit hit = new Hit();
-        hit.setUserId(id);
-        hit.setPage(page);
-        hit.setHit_date(LocalDateTime.now());
+    public DailyStats createEntry(@RequestBody Hit hit) {
+        hit.setHitDate(LocalDateTime.now());
         this.repository.save(hit);
         return this.statsService.getDailyStats();
     }
